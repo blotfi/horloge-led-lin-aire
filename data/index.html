@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head lang=fr-FR>
+    <meta charset="UTF-8">
+    <title>H LED Configuration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>-->
+    <style>
+        body {
+            min-width: 310px;
+            max-width: 800px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-family: Arial;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        .cstname	{
+            color: #286090;
+            width: 80px;
+            padding-left: 6px;
+            padding-right: 6px;
+            float: left;
+        }
+        .csttime	{
+            color: #204d74;
+        }
+        .cblue {
+            color: darkblue;
+        }
+
+        .cfushia {
+            color: #FF00FF;
+        }
+    </style>
+</head>
+<body>
+<h1>Configuration de H Led</h1>
+
+Date et heure : <span class="cblue" id="id_dth"></span>
+
+<form action='/' method='GET'>
+    <h3>Paramètres Wifi :</h3>
+    SSID 1 : <input style='width: 100px' type='text' name='ssid1' id='ssid1' value=''>
+    &nbsp&nbsp
+    PASSWORD 1 : <input style='width: 100px' type='text' name='pw1' id='pw1' value=''>
+    <br>
+    SSID 2 : <input style='width: 100px' type='text' name='ssid2' id='ssid2' value=''>
+    &nbsp&nbsp
+    PASSWORD 2 : <input style='width: 100px' type='text' name='pw2' id='pw2' value=''>
+    <br>
+    <br><input style='height: 30px; width: 100px' type='submit' formaction='/' value='Envoi'>
+</form>
+<hr>
+<br><br><a href='/'>Retour</a>
+</body>
+
+<script>
+    function DateFmt(b) {
+        this.formatString = b;
+        var a = ["Jan", "Fev", "Mar", "Avr", "Mai", "Jun", "Jul", "Aut", "Sep", "Oct", "Nov", "Dec"];
+        var e = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
+        var d = function (f) {
+            return ("0" + f).substr(-2, 2)
+        };
+        var c = {
+            d: ["getDate", function (f) {
+                return d(f)
+            }], m: ["getMonth", function (f) {
+                return d(f + 1)
+            }], n: ["getMonth", function (f) {
+                return a[f]
+            }], w: ["getDay", function (f) {
+                return e[f]
+            }], y: ["getFullYear"], H: ["getHours", function (f) {
+                return d(f)
+            }], M: ["getMinutes", function (f) {
+                return d(f)
+            }], S: ["getSeconds", function (f) {
+                return d(f)
+            }], i: ["toISOString"]
+        };
+        this.format = function (f) {
+            var g = this.formatString.replace(/%(.)/g, function (h, i) {
+                var j = f[(c[i])[0]]();
+                if (c[i][1] != null) {
+                    j = c[i][1](j)
+                }
+                return j
+            });
+            return g
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+        var dth = new Date();
+        var fmtdate = new DateFmt("%d %n %y  - %H:%M:%S");
+        var SS = fmtdate.format(dth);
+        document.getElementById("id_dth").innerHTML = SS;
+        // récupère les paramètres
+        url = "param.json";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                data = JSON.parse(xhr.responseText);
+                // document.getElementById("id_ssid1").innerText = data.ssid1;
+                document.getElementById("ssid1").value = data.ssid1;
+                // document.getElementById("id_pw1").innerText = data.pw1;
+                document.getElementById("pw1").value = data.pw1;
+                // document.getElementById("id_ssid2").innerText = data.ssid2;
+                document.getElementById("ssid2").value = data.ssid2;
+                // document.getElementById("id_pw2").innerText = data.pw2;
+                document.getElementById("pw2").value = data.pw2;
+                document.getElementById("ville").value = data.ville;
+                document.getElementById("latitude").value = data.lat;
+                document.getElementById("longitude").value = data.long;
+                document.getElementById("TimeZoneTown").value = data.TZT;
+                document.getElementById("Convention").value = data.Convention;
+                document.getElementById("DST").value = data.DST;
+                document.getElementById("En0").checked  = data.EnAthan & (1<<0);
+                document.getElementById("En1").checked  = data.EnAthan & (1<<1);
+                document.getElementById("En2").checked  = data.EnAthan & (1<<2);
+                document.getElementById("En3").checked  = data.EnAthan & (1<<3);
+                document.getElementById("En4").checked  = data.EnAthan & (1<<4);
+                var dth = new Date();
+                var fmtdate = new DateFmt("%d %n %y  - %H:%M:%S");
+                var SS = fmtdate.format(dth);
+                document.getElementById("id_dth").innerHTML = SS;
+            }
+        };
+        xhr.send();
+
+        GetSalatTimes();
+    });
+
+    //----------------------------------------------------------------------------
+    function GetSalatTimes() {
+        url = "salat.json";
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                data = JSON.parse(xhr.responseText);
+                document.getElementById("lblFajr").innerText = data.Fajr;
+                document.getElementById("lblZhur").innerText = data.Zuhr;
+                document.getElementById("lblAsr").innerText = data.Asr;
+                document.getElementById("lblMaghrib").innerText = data.Maghrib;
+                document.getElementById("lblIsha").innerText = data.Isha;
+            }
+        };
+        xhr.send();
+    }
+
+</script>
+</html>
