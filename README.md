@@ -7,7 +7,7 @@
 
 *Il rythme notre vie mais peut aussi la stresser.*
 
-*Si toutes blessent et la dernière tue*.**.
+*Si toutes blessent et la dernière tue*.*.
 
 *A nous de le couper avant qu'il ne nous coupe***.
 
