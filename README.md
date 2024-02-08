@@ -1,19 +1,24 @@
 # Horloge à LED linéaire
 
 ## Le temps
-*On le perçoit filer comme des perles lumineuses qui sautillent sur une règle linéaire.
+*On le perçoit filer comme des perles lumineuses qui sautillent sur une règle linéaire.*
 
-Il se renouvelle avec un cycle diurne mais nous rapproche d'une fin certaine.
+*Il se renouvelle avec un cycle diurne mais nous rapproche d'une fin certaine.*
 
-Il rythme notre vie mais peut aussi la stresser.
+*Il rythme notre vie mais peut aussi la stresser.*
 
-A nous de le couper avant qu'il ne nous coupe**.
+*Si toutes blessent et la dernière tue*.**.
 
-*Afin de pouvoir découvrir, inventer, concevoir et transmettre.
+*A nous de le couper avant qu'il ne nous coupe***.
 
-C’est un beau métier mais qu’on vit comme une passion !*
+*Afin de pouvoir découvrir, inventer, concevoir et transmettre.*
 
-**En référence au poète Al-Mutanabbi, 915-965,* "الوقت كالسيف إن لم تقطعه قطعك",
+*C’est un beau métier mais qu’on vit comme une passion !*
+
+**En référence à la célèbre locution présente sur les cadrans solaires
+"Vulnerant omnes, ultima necat", "Toutes blessent, la dernière tue".*
+
+***En référence au poète Al-Mutanabbi, 915-965,* "الوقت كالسيف إن لم تقطعه قطعك",
 *"le temps est comme une épée. Si tu ne le coupes pas, il te coupe".*
 
 ## Fonctionnement
@@ -28,7 +33,7 @@ La LED jaune le jour du mois.
 
 L’horloge se connecte par WiFi au serveur `europe.pool.ntp.org` par NTP (Network Time Protocol) toutes les 24 h afin de se resynchroniser et avoir une précision à la seconde près.
 
-Le code est écrit en langage C sur ESP8266 Wemos light.
+Le code est écrit en langage C sur ESP8266 Wemos D1 mini.
 
-Une seule sortie logique pilote les 240 LED WS2812 du ruban de 4 m
+Une seule sortie logique pilote les 240 LED WS2812b du ruban de 4 m
 
