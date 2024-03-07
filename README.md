@@ -7,7 +7,7 @@
 
 *Il rythme notre vie mais peut aussi la stresser.*
 
-*Si toutes blessent et la dernière tue*.*
+*Si toutes blessent, la dernière tue*.*
 
 *A nous de le couper avant qu'il ne nous coupe***.
 
@@ -18,7 +18,7 @@
 **En référence à la célèbre locution présente sur les cadrans solaires
 "Vulnerant omnes, ultima necat", "Toutes blessent, la dernière tue".*
 
-***En référence au poète Al-Mutanabbi, 915-965,* "الوقت كالسيف إن لم تقطعه قطعك",
+***En référence à un ancien proverbe arabe,* "الوقت كالسيف إن لم تقطعه قطعك",
 *"le temps est comme une épée. Si tu ne le coupes pas, il te coupe".*
 
 ## Fonctionnement
