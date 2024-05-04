@@ -37,3 +37,5 @@ Le code est écrit en langage C sur ESP8266 Wemos D1 mini.
 
 Une seule sortie logique pilote les 240 LED WS2812b du ruban de 4 m
 
+![image](https://github.com/blotfi/horloge-led-lin-aire/assets/24873186/1965bcdb-db59-4347-affe-6eb1c7e219ce)
+
